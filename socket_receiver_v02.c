@@ -191,9 +191,9 @@ void restore_data(unsigned char *rec_data_package){
 	unsigned char user_id[10] = "";	
 	unsigned char current[10] = "";
 	unsigned char voltage[10] = "";
-  	unsigned char *query_statement_seg1 = "INSERT INTO demo VALUES(";
-    unsigned char *realtime_statement_seg1 = "INSERT INTO RealTimeData VALUES(";
-    unsigned char *voltage_monitor_seg1 = "INSERT INTO VoltageMonitor VALUES(";
+  	unsigned char query_statement_seg1[] = "INSERT INTO demo VALUES(";//change pointer on .data to array on heap
+    unsigned char realtime_statement_seg1[] = "INSERT INTO RealTimeData VALUES(";
+    unsigned char voltage_monitor_seg1[] = "INSERT INTO VoltageMonitor VALUES(";
 	unsigned char query_statement[200] = "";
 	unsigned int id,current_value,voltage_value;
 	//validation
@@ -245,6 +245,7 @@ void restore_data(unsigned char *rec_data_package){
   	mysql_real_connect(conn, "localhost", "root", "382395","gprs", 0, NULL, 0);
 	
     if(rec_data_package[6] == 0x01) {
+		/* Store History Date */
         strcat(query_statement,query_statement_seg1);//(des,src)
         strcat(query_statement,user_id);
         strcat(query_statement,current);
@@ -260,6 +261,7 @@ void restore_data(unsigned char *rec_data_package){
         mysql_query(conn,query_statement);
     }
     else if(rec_data_package[6] == 0x50) {
+		/* Store Realtime Data */
         strcat(query_statement,realtime_statement_seg1);//(des,src)
         strcat(query_statement,user_id);
         strcat(query_statement,current);
@@ -273,12 +275,23 @@ void restore_data(unsigned char *rec_data_package){
         mysql_query(conn,query_statement);
     }
     else if(rec_data_package[6] == 0x80) {
-        //acquire finished
+        /* Realtime Data Acquire Finished */
         *(ShmPTR + 1) = 'F';//reset shared memory
 		#ifdef DEBUG_TIME
 			printf("%s\n","reset shared memory!");
 		#endif
-    }else {printf("type is : %x\n",rec_data_package[6]);}
+    }else if(rec_data_package[6] == 0xa0) {
+		/* Store Voltage Monitor Data */
+        strcat(query_statement,voltage_monitor_seg1);//(des,src)
+        strcat(query_statement,user_id);
+        strcat(query_statement,current);
+        strcat(query_statement,voltage);
+        strcat(query_statement,",");
+        strcat(query_statement,"current_date,");
+        strcat(query_statement,"current_time)");
+	}else {
+		printf("type is : %x\n",rec_data_package[6]);
+	}
   	
 	affected_rows = mysql_affected_rows(conn);
 
