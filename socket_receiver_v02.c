@@ -21,6 +21,7 @@
 
 void *connection_handler(void *);
 void restore_data(unsigned char *);//??
+unsigned char* stringProcess(unsigned char *,int*);
  
 
 /* Shared Memory Related Variable Declaration */
@@ -33,7 +34,7 @@ int main(int argc , char *argv[])
     /* Socket Related Variable Declaretion */
     int socket_desc , new_socket , c , *new_sock;
     struct sockaddr_in server , client;
-    unsigned char *message;
+    //unsigned char *message;
     
 	/* setsockopt related variable */
     int optval;
@@ -61,7 +62,7 @@ int main(int argc , char *argv[])
     setsockopt(socket_desc, SOL_SOCKET, SO_KEEPALIVE, &optval, sizeof(optval));//open keep-alive
     optval = 5;
     setsockopt(socket_desc, SOL_TCP,TCP_KEEPCNT, &optval, sizeof(int));//number of probe
-    optval = 30;	//5 minutes larger than current heart beat packet interval - 30 seconds
+    optval = 300;	//5 minutes larger than current heart beat packet interval - 30 seconds
     setsockopt(socket_desc, SOL_TCP, TCP_KEEPIDLE, &optval, sizeof(int));//keep-alive time(second)
     optval = 5;
     setsockopt(socket_desc, SOL_TCP, TCP_KEEPINTVL, &optval, sizeof(int));//probe interval
@@ -128,7 +129,8 @@ void *connection_handler(void *socket_desc)
     int read_size;
     unsigned char client_message[256];
     unsigned char client_command[5] = {0xBB,0x30,0x70,0x00,0x00};
-    
+    unsigned char *temp;
+
     //message = (char *) malloc(256); 
     //Send some messages to the client
     //message = "Greetings! I am your connection handler\n";
@@ -145,13 +147,18 @@ void *connection_handler(void *socket_desc)
             #ifdef DEBUG_TIME
                 printf("%s\n","Shared Memory Setted");
             #endif
+			/* notification finished , so i got your command , and i am ready to execute it */
             *ShmPTR = 'F';
+			/* now , we start wait reply of coordinator */
+            *(ShmPTR + 2) = 'S';
             write(sock , client_command , 3);//send command to gprs
         }
 
         client_message[read_size] = '\0';
-		if(read_size == 8){
-			restore_data(client_message);
+		
+		temp = stringProcess(client_message,&read_size);
+		if(read_size >= 8 && temp != NULL){
+			restore_data(temp);
             #ifdef DEBUG_TIME
 			printf("Received Valid String:%s \n",client_message);
             #endif
@@ -184,6 +191,23 @@ void *connection_handler(void *socket_desc)
     free(socket_desc);
     return 0;
 }
+/* reurn the correct start pointer */
+unsigned char* stringProcess(unsigned char* c,int* rec_len){
+	/*	find the start point of a packet when packet is: 
+	 *	1.inserted some byte
+	 *	2.losted some byte
+	 */
+	int i;
+	int len = *rec_len;
+
+	if(c == NULL || rec_len == NULL || len == 0)return NULL;
+	for(i = 0;i < len && c != '\0';++i,++c){
+		if(*c == startByte)return c;
+		--(*rec_len);//valid length
+	}
+	return NULL;
+}
+
 void restore_data(unsigned char *rec_data_package){ 
 
 	MYSQL *conn;//connect handle(struct st_mysql)
@@ -277,6 +301,7 @@ void restore_data(unsigned char *rec_data_package){
     else if(rec_data_package[6] == 0x80) {
         /* Realtime Data Acquire Finished */
         *(ShmPTR + 1) = 'F';//reset shared memory
+        *(ShmPTR + 2) = 'F';
 		#ifdef DEBUG_TIME
 			printf("%s\n","reset shared memory!");
 		#endif
@@ -289,6 +314,12 @@ void restore_data(unsigned char *rec_data_package){
         strcat(query_statement,",");
         strcat(query_statement,"current_date,");
         strcat(query_statement,"current_time)");
+
+        #ifdef DEBUG_TIME
+            printf("%s\n", query_statement);
+        #endif
+        mysql_query(conn,query_statement);
+
 	}else {
 		printf("type is : %x\n",rec_data_package[6]);
 	}
