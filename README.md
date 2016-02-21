@@ -8,7 +8,7 @@ ssh root@121.43.109.2
 µÇÂ¼°¢ÀïÔÆ·þÎñÆ÷£¬½øÈë·þÎñÆ÷µÄ**/usr/share/nginx/html/**ÎÄ¼þ¼Ð£¬¸ÃÎÄ¼þ¼ÐÊÇ**WEB**·þÎñµÄ¸ùÄ¿Â¼
 £¬ÀýÈçÄã·ÃÎÊ**http://121.43.109.2/test.html**£¬ÆäÊµ¾ÍÊÇÍ¨¹ý·þÎñÆ÷ÉÏµÄ**Nginx**»ñÈ¡Õâ¸ö¸ù
 Ä¿Â¼ÏÂÃæµÄtest.htmlÕâ¸öÎÄ¼þ²¢°ÑËü·¢»Ø¸øÄãµÄä¯ÀÀÆ÷£¬ÄãµÄä¯ÀÀÆ÷»á¶ÁÈ¡**html**ÎÄ¼þµÄÄÚÈÝ²¢
-°ÑÄÚÈÝÕ¹Ê¾³öÀ´¡£
+°ÑÄÚÈÝÕ¹Ê¾³öÀ´
 2. **WEB**·þÎñÆ÷µÄ¸ùÄ¿Â¼ÏÂÃæ´æ·ÅµÄ×ÅÃ¿¸öÌ¨ÇøµÄÍøÒ³ÎÄ¼þ£¬ÀýÈç**zoneYiwu**Ä¿Â¼£¬ÀàÐÍ°üÀ¨html¡¢
 css¡¢javascriptºÍphp£¬ÆäÖÐhtmlºÍcssÓÃÓÚÒ³ÃæµÄÄÚÈÝºÍ²¼¾Ö¿ØÖÆ£¬javascriptÓÃÓÚÒ³Ãæ¶¯Ì¬ÊÂ¼þµÄ´¦Àí£¬
 ÀýÈçÊó±êµã»÷ÊÂ¼þ£¬phpÓÃÓÚ´ÓMySQLÊý¾Ý¿â»ñÈ¡ÏàÓ¦µÄÇëÇóÊý¾Ý£¬²¢ÒÔjson¸ñÊ½·µ»Ø£¬Ö÷ÒªÊÇÔÚWEBÒ³Ãæ(htmlÎÄ¼þ)
@@ -28,11 +28,29 @@ MySQLÊý¾Ý¿âÖÐ£¬Ã¿¸öÌ¨ÇøÎÄ¼þ¼ÐÏÂ¶¼ÓÐÒ»¸öSocketReceiverÎÄ¼þ¼Ð£¬ÏÂÃæ´æ·ÅÁËÕâ¸ö³ÌÐò£
 2. ³ÌÐòÖ÷Òª°üÀ¨ÖªÊ¶µãÓÐsocket¡¢pthread(Ïß³Ì)¡¢mysql c api¡¢IPC(shared memory¡¢semaphore¡¢message queue)
 3. ÆäÖÐsocketÖ÷ÒªÓÃÀ´¼àÌý¼¯ÖÐÆ÷GPRSÁ¬½ÓÇëÇó£¬ÔÚ½¨Á¢Á¬½Óºó±£³ÖºÍ¼¯ÖÐÆ÷µÄÍ¨ÐÅ£¬socket½¨Á¢Á´½ÓµÄ¹ý³Ì¼ûÏÂÍ¼
 ![socket illustrate](./reference/socketÁ÷³ÌÍ¼.png)
+¼¯ÖÐÆ÷µÄGPRSÆäÊµ¾ÍÊÇÍ¼ÖÐµÄTCP client£¬¶ø±¾RepoÖÐµÄSocketÍ¨ÐÅ³ÌÐòÆäÊµ¾ÍÊÇÍ¼ÖÐµÄTCP server£¬¼¯ÖÐÆ÷µÄGPRS
+ÒÑ¾­ÔÚÓ²¼þÖÐ¹Ì»¯ÁËclient¶ËµÄ³ÌÐò£¬ËùÒÔÎÒÃÇÖ»Òª¹ØÐÄserver¶ËÁË£¬´ÓÍ¼ÉÏ¿ÉÒÔ¿´µ½server¶ËÒª¾­Àúsocket¡¢bind¡¢
+listen¡¢accept¡¢read/writeÕâ¼¸¸öÁ÷³Ì£¬³ÌÐòÖÐÒ²ÊÇ°´ÕÕÕâ¸öÁ÷³ÌÀ´µÄ£¬ÕâÀï¾Í²»Ò»Ò»½éÉÜÁË£¬ÖµµÃ×¢ÒâµÄÊÇÎÒÃÇ
+ÔÚ³ÌÐòÖÐÐÞ¸ÄÁËtcpµÄkeepalive»úÖÆµÄÒ»Ð©²ÎÊý£¬±£Ö¤¼¯ÖÐÆ÷ÔÚºÍ·þÎñÆ÷¶Ï¿ªÁ¬½ÓºóÔÚ¶ÌÊ±¼äÄÚ¾Í¹Ø±ÕsocketÁ¬½Ó£¬
+keepalive»úÖÆÏê¼û**<<TCP/IPÏê½â ¾í1:Ð­Òé>>**or×ÔÐÐËÑË÷
+4. ÔÚ³ÌÐò½ÓÊÜÁË¼¯ÖÐÆ÷µÄÁ¬½Óºó£¬»áµ÷ÓÃpthread_createÐÂ½¨2¸ö(pthread)Ïß³Ì£¬·Ö±ðÓÃÓÚ·¢ËÍÊý¾Ý¸ø¼¯ÖÐÆ÷
+(sendDate_handlerº¯Êý)ºÍ½ÓÊÕ¼¯ÖÐÆ÷µÄÊý¾Ý(connection_handlerº¯Êý)
+5. ÔÚÊý¾Ý½ÓÊÕÏß³ÌÖÐ£¬Ò»µ©½ÓÊÕµ½ÓÐÐ§Êý¾Ý£¬¾Íµ÷ÓÃrestore_dataº¯Êý½«½ÓÊÕµ½µÄÊý¾ÝÀûÓÃmysql c api´æ´¢µ½MySQL
+Êý¾Ý¿âÖÐ
+6. ×îºó»¹Ê£ÏÂIPC(inter-process communication)ÁË£¬ÓÉÓÚÍøÒ³Ò³ÃæÊÇÓÉNginx¹ÜÀí£¬ºÍ±¾³ÌÐò²»ÊÇÍ¬Ò»¸ö³ÌÐò£¬ÐèÒª
+ÀûÓÃ½ø³Ì¼äÍ¨ÐÅ(IPC)ÔÚ±¾³ÌÐòºÍNginxÖ®¼ä´«µÝÊý¾Ý£¬ÓÉÓÚ»ñÈ¡Êý¾ÝÒ»°ãÊÇµ÷ÓÃphp½Å±¾£¬ËùÒ»Êµ¼ÊÉÏÊÇÔÚphp³ÌÐòºÍ
+±¾³ÌÐò¼ä½øÐÐIPC¡£Ö÷ÒªÓÃµ½µÄIPCÓÐ¹²ÏíÄÚ´æ(shared memory)¡¢ÏûÏ¢¶ÓÁÐ(message queue)ºÍÐÅºÅÁ¿(semaphore)£¬ÆäÖÐ
+¹²ÏíÄÚ´æÓÃÓÚ´æ´¢µ±Ç°Êý¾Ý´«µÝµÄ×´Ì¬£¬ÏûÏ¢¶ÓÁÐÓÃÓÚ´«µÝÊý¾Ý£¬ÐÅºÅÁ¿¿ØÖÆÍ¬Ê±²»ÄÜÓÐ¶à¸öÏß³Ì·ÃÎÊ¹²ÏíÄÚ´æ£¬·ÀÖ¹
+²úÉú¾ºÕùÌõ¼þ£¬ËùÒÔÔÚ¿ª·¢¹ý³ÌÖÐÎÒÃÇÐèÒªÁË½âcÓïÑÔºÍphpÖÐÈçºÎÊ¹ÓÃÕâÈýÖÖIPC·½·¨£¬[ÎÄµµÄ¿Â¼](./reference)ÏÂÓÐ
+Ò»Ð©²Î¿¼ÎÄµµ£¬ÁíÍâ£¬[²Î¿¼ÎÄµµ](#²Î¿¼ÎÄµµ)²¿·Ö
 
 ###ÈçºÎÊ¹ÓÃ
 1. Í¨¹ýmakeÖ´ÐÐ[MAKEFILE](./Makefile)
-2. ÊäÈë**./test &**ÔËÐÐÉú³ÉµÄ¿ÉÖ´ÐÐÎÄ¼þ(test)£¬ºóÃæµÄ"&"±íÊ¾³ÌÐòÔÚºóÌ¨ÔËÐÐ£¬¹Ø±Õµ±Ç°termianl¶Ô³ÌÐòµÄ
+2. ÊäÈëÏÂÃæµÄÃüÁîÔËÐÐÉú³ÉµÄ¿ÉÖ´ÐÐÎÄ¼þ(test)£¬ºóÃæµÄ"&"±íÊ¾³ÌÐòÔÚºóÌ¨ÔËÐÐ£¬¹Ø±Õµ±Ç°termianl¶Ô³ÌÐòµÄ
 ÔËÐÐÃ»ÓÐÓ°Ïì
+```
+./test &
+```
 
 ###ÆäËû
 * ·þÎñÆ÷¶ËÒÑ¾­°²×°ÁËNginx¡¢PHP5¡¢php-fpmºÍMySQLÈí¼þ£¬¾ù¿ÉÍ¨¹ýsudo apt-get install software-name
