@@ -1,20 +1,16 @@
 ##SocketÊý¾Ý½ÓÊÕ³ÌÐò
 
 ###ÐÂÊÖÈëÃÅ
-1. °²×°LinuxÏµÍ³£¬´ò¿ª**terminal**£¬ÊäÈë 
-```
-ssh root@121.43.109.2
-``` 
-
-2. µÇÂ¼°¢ÀïÔÆ·þÎñÆ÷ºó£¬½øÈë·þÎñÆ÷µÄ**/usr/share/nginx/html/**ÎÄ¼þ¼Ð£¬¸ÃÎÄ¼þ¼ÐÊÇ**WEB**·þÎñµÄ¸ùÄ¿Â¼
-£¬ÀýÈçÄã·ÃÎÊ**http://121.43.109.2/test.html**£¬ÆäÊµ¾ÍÊÇÍ¨¹ý·þÎñÆ÷ÉÏµÄ**Nginx**»ñÈ¡Õâ¸ö¸ù
-Ä¿Â¼ÏÂÃæµÄtest.htmlÕâ¸öÎÄ¼þ²¢°ÑËü·¢»Ø¸øÄãµÄä¯ÀÀÆ÷£¬ÄãµÄä¯ÀÀÆ÷»á¶ÁÈ¡**html**ÎÄ¼þµÄÄÚÈÝ²¢
-°ÑÄÚÈÝÕ¹Ê¾³öÀ´
-3. **WEB**·þÎñÆ÷µÄ¸ùÄ¿Â¼ÏÂÃæ´æ·ÅµÄ×ÅÃ¿¸öÌ¨ÇøµÄÍøÒ³ÎÄ¼þ£¬ÀýÈç**zoneYiwu**Ä¿Â¼£¬ÀàÐÍ°üÀ¨html¡¢
+1. °²×°LinuxÏµÍ³£¬´ò¿ª**terminal**£¬ÊäÈë
+`ssh root@121.43.109.2`µÇÂ¼µÇÂ¼°¢ÀïÔÆ·þÎñÆ÷ºó£¬½øÈë·þÎñÆ÷µÄ**/usr/share/nginx/html/**ÎÄ¼þ¼Ð£¬
+¸ÃÎÄ¼þ¼ÐÊÇ**WEB**·þÎñµÄ¸ùÄ¿Â¼£¬ÀýÈçÄã·ÃÎÊ**http://121.43.109.2/test.html**£¬ÆäÊµ¾ÍÊÇÍ¨¹ý·þÎñ
+Æ÷ÉÏµÄ**Nginx**»ñÈ¡Õâ¸ö¸ùÄ¿Â¼ÏÂÃæµÄtest.htmlÕâ¸öÎÄ¼þ²¢°ÑËü·¢»Ø¸øÄãµÄä¯ÀÀÆ÷£¬ÄãµÄä¯ÀÀÆ÷»á¶ÁÈ¡
+**html**ÎÄ¼þµÄÄÚÈÝ²¢°ÑÄÚÈÝÕ¹Ê¾³öÀ´
+2. **WEB**·þÎñÆ÷µÄ¸ùÄ¿Â¼ÏÂÃæ´æ·ÅµÄ×ÅÃ¿¸öÌ¨ÇøµÄÍøÒ³ÎÄ¼þ£¬ÀýÈç**zoneYiwu**Ä¿Â¼£¬ÀàÐÍ°üÀ¨html¡¢
 css¡¢javascriptºÍphp£¬ÆäÖÐhtmlºÍcssÓÃÓÚÒ³ÃæµÄÄÚÈÝºÍ²¼¾Ö¿ØÖÆ£¬javascriptÓÃÓÚÒ³Ãæ¶¯Ì¬ÊÂ¼þµÄ´¦Àí£¬
 ÀýÈçÊó±êµã»÷ÊÂ¼þ£¬phpÓÃÓÚ´ÓMySQLÊý¾Ý¿â»ñÈ¡ÏàÓ¦µÄÇëÇóÊý¾Ý£¬²¢ÒÔjson¸ñÊ½·µ»Ø£¬Ö÷ÒªÊÇÔÚWEBÒ³Ãæ(htmlÎÄ¼þ)
 µÄAjaxÇëÇóÖÐµ÷ÓÃËü
-4. ½øÈëÕýÌâ£¬Ç°ÃæËµµÄÊÇÊý¾ÝÏÔÊ¾²¿·Ö£¬¾ÍÊÇ°ÑÊý¾Ý´ÓÊý¾Ý¿â¶Á³öÀ´£¬±¾RepoÖ÷Òª½éÉÜµÄÊÇÈçºÎ½«Êý¾Ý´æ´¢µ½
+3. ½øÈëÕýÌâ£¬Ç°ÃæËµµÄÊÇÊý¾ÝÏÔÊ¾²¿·Ö£¬¾ÍÊÇ°ÑÊý¾Ý´ÓÊý¾Ý¿â¶Á³öÀ´£¬±¾RepoÖ÷Òª½éÉÜµÄÊÇÈçºÎ½«Êý¾Ý´æ´¢µ½
 MySQLÊý¾Ý¿âÖÐ£¬Ã¿¸öÌ¨ÇøÎÄ¼þ¼ÐÏÂ¶¼ÓÐÒ»¸öSocketReceiverÎÄ¼þ¼Ð£¬ÏÂÃæ´æ·ÅÁËÕâ¸ö³ÌÐò£¬ÔÚ×îÐÂµÄ¸üÐÂÖÐ£¬
 ¸Ã³ÌÐò´æ·ÅÔÚSocketReceiver/message_queue/CÕâ¸öÎÄ¼þ¼ÐÏÂ£¬±¾ÎÄÖÐÒÔ[Õâ¸ö×îÐÂµÄ](./socket_receiver_v02.c)
 Îª×¼£¬ÔÚºóÃæµÄ³ÌÐò½éÉÜÖÐ»áÖ÷Òª½éÉÜ³ÌÐòµÄÖ÷Òª¹¦ÄÜºÍÊµÏÖ£¬ÎÒÃÇÊ¹ÓÃµÄÊÇSystem V IPC£¬¶ø²»ÊÇPOSIX IPC
@@ -31,7 +27,7 @@ MySQLÊý¾Ý¿âÖÐ£¬Ã¿¸öÌ¨ÇøÎÄ¼þ¼ÐÏÂ¶¼ÓÐÒ»¸öSocketReceiverÎÄ¼þ¼Ð£¬ÏÂÃæ´æ·ÅÁËÕâ¸ö³ÌÐò£
 ÒÑ¾­ÔÚÓ²¼þÖÐ¹Ì»¯ÁËclient¶ËµÄ³ÌÐò£¬ËùÒÔÎÒÃÇÖ»Òª¹ØÐÄserver¶ËÁË£¬´ÓÍ¼ÉÏ¿ÉÒÔ¿´µ½server¶ËÒª¾­Àúsocket¡¢bind¡¢
 listen¡¢accept¡¢read/writeÕâ¼¸¸öÁ÷³Ì£¬³ÌÐòÖÐÒ²ÊÇ°´ÕÕÕâ¸öÁ÷³ÌÀ´µÄ£¬ÕâÀï¾Í²»Ò»Ò»½éÉÜÁË£¬ÖµµÃ×¢ÒâµÄÊÇÎÒÃÇ
 ÔÚ³ÌÐòÖÐÐÞ¸ÄÁËtcpµÄkeepalive»úÖÆµÄÒ»Ð©²ÎÊý£¬±£Ö¤¼¯ÖÐÆ÷ÔÚºÍ·þÎñÆ÷¶Ï¿ªÁ¬½ÓºóÔÚ¶ÌÊ±¼äÄÚ¾Í¹Ø±ÕsocketÁ¬½Ó£¬
-keepalive»úÖÆÏê¼û**<<TCP/IPÏê½â ¾í1:Ð­Òé>>**or×ÔÐÐËÑË÷
+keepalive»úÖÆÏê¼û<<TCP/IPÏê½â ¾í1:Ð­Òé>> or ×ÔÐÐËÑË÷
 4. ÔÚ³ÌÐò½ÓÊÜÁË¼¯ÖÐÆ÷µÄÁ¬½Óºó£¬»áµ÷ÓÃpthread_createÐÂ½¨2¸ö(pthread)Ïß³Ì£¬·Ö±ðÓÃÓÚ·¢ËÍÊý¾Ý¸ø¼¯ÖÐÆ÷
 (sendDate_handlerº¯Êý)ºÍ½ÓÊÕ¼¯ÖÐÆ÷µÄÊý¾Ý(connection_handlerº¯Êý)
 5. ÔÚÊý¾Ý½ÓÊÕÏß³ÌÖÐ£¬Ò»µ©½ÓÊÕµ½ÓÐÐ§Êý¾Ý£¬¾Íµ÷ÓÃrestore_dataº¯Êý½«½ÓÊÕµ½µÄÊý¾ÝÀûÓÃmysql c api´æ´¢µ½MySQL
