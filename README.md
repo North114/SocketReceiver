@@ -47,8 +47,9 @@ keepalive机制详见"**TCP/IP详解 卷1:协议**" or 自行搜索
 ###其他
 * 服务器端已经安装了Nginx、PHP5、php-fpm和MySQL软件，均可通过sudo apt-get install software-name
 获取，装好之后需要在Nginx的配置文件中配置php相关的部分，服务器的[配置文件](./configs/nginx.conf)可供参考
-，装好之后可以在**/usr/share/nginx/html/**新建html和php文件，然后通过浏览器访问之，如果能显示出来就说明
-安装配置成功了，在这个安装和配置过程中你也许会碰到一些问题，请Baidu/Google之
+，装好之后可以在**/usr/share/nginx/html/**(目前服务器上该文件夹下文件已保存到了http://pan.baidu.com/s/1i4XE1JR)
+新建html和php文件，然后通过浏览器访问之，如果能显示出来就说明安装配置成功了，在这个安装和配置过程中你
+也许会碰到一些问题，请Baidu/Google之
 * 如果你想将服务器上的文件夹(文件的话去掉-r选项)拷贝到自己电脑，可以使用如下命令将文件或者文件夹
 拷贝到当前目录下，前提还是**Linux**系统下
 ```
